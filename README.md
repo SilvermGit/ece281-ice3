@@ -27,4 +27,4 @@ Assert statements of other severity levels will be reported, but not fail the wo
 
 ![Testbench waveform for ripple adder](ice3waveform.png)
 ![Sketch of waveform ripple adder](ice3Sketch.png)
-After setting up my ripple adder component, I was getting errors, so I asked ChatGPT: "find my mistake." It told me that I forgot to port map my switches with STD_LOGIC after declaring the component.
+After setting up my ripple adder component, I was not getting errors, so I asked ChatGPT: "find my mistake." It told me that I incorrectly port mapped my basys board to my ripple adder component, and gave me the correct steps to fix this.
