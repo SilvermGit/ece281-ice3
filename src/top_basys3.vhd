@@ -65,32 +65,28 @@ architecture top_basys3_arch of top_basys3 is
         );
     end component;
 
-    signal w_A    : std_logic_vector(3 downto 0);
-    signal w_B    : std_logic_vector(3 downto 0);
-    signal w_Cin  : std_logic;
-    signal w_S    : std_logic_vector(3 downto 0);
-    signal w_Cout : std_logic;
+    signal w_A : STD_LOGIC_VECTOR(3 downto 0);
+    signal w_B : STD_LOGIC_VECTOR(3 downto 0);
+    signal w_Cin : STD_LOGIC;
+    signal w_S : STD_LOGIC_VECTOR(3 downto 0);
+    signal w_Cout : STD_LOGIC;
 
+    
 begin
-
-    -- Input mapping
     w_Cin <= sw(0);
-    w_A   <= sw(4 downto 1);
-    w_B   <= sw(15 downto 12);
-
---    -- Ripple-carry adder instance
-    U_RIPPLE_ADDER : ripple_adder
+    w_A <= sw(4 downto 1);
+    w_B <= sw(15 downto 12);
+    
+    led(3 downto 0) <= w_S;
+    led(15) <= w_Cout;
+    
+    U_RIPPLE : Ripple_adder
         port map (
-            A    => w_A,
-            B    => w_B,
-            Cin  => w_Cin,
-            S    => w_S,
+            Cin => w_Cin,
+            A => w_A,
+            B => w_B,
+            S => w_S,
             Cout => w_Cout
         );
-
-    -- Output mapping
-    led(3 downto 0)  <= w_S;
-    led(15)          <= w_Cout;
-    led(14 downto 4) <= (others => '0');
-
+ 
 end top_basys3_arch; 
